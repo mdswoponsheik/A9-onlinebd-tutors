@@ -47,7 +47,7 @@ const Banner = () => {
                     <h2 className='text-center text-6xl font-bold'>{banners[index.title]}</h2>
                     <p className='text-center'>{banners[index].desc}</p>
                 </div>
-                <Link href={`/tutors`}><button className='p-3 md:btn bg-transparent rounded-lg border border-white text-white hover:bg-white hover:text-[#FFCC31] hover:border hover:border-[#FFCC31] text-md md:text-xl flex items-center'><FaArrowRight />Booking Tutors</button></Link>
+                <Link href={`/tutors`}><button className='p-3 md:btn bg-transparent rounded-lg border border-white text-white hover:text-[#FFCC31] hover:border hover:border-[#FFCC31] text-md md:text-xl flex items-center'><FaArrowRight />Booking Tutors</button></Link>
             </div>
             {/* arrows */}
       <div className="absolute bottom-10 flex gap-6">

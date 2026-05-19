@@ -4,7 +4,7 @@ import React from 'react'
 const Navbar = () => {
     return (
         <div>
-            <div className="navbar bg-yellow-50 shadow-sm">
+            <div className="navbar bg-green-50 shadow-sm">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
