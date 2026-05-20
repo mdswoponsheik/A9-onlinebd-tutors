@@ -1,24 +1,27 @@
 
 import { Button, Card, CloseButton } from "@heroui/react";
+import Link from "next/link";
 
 const AllTutorsPage = async () => {
   const res = await fetch("http://localhost:5000/tutors");
   const tutorsData = await res.json();
   console.log(tutorsData)
+
+ 
   return (
     <div>
       <div className="max-w-9/10 mx-auto mb-10">
         <h2 className="text-center text-4xl font-bold text-green-400 my-5">All Tutors</h2>
         <div className="grid grid-cols-3 gap-5" >
           {tutorsData.map((tutors) => {
-            return <div className="">
-              <Card className="w-full items-stretch md:flex-row border-2 border-green-500">
+            return <div key={tutors?._id} className="">
+              <Card className="w-full items-stretch md:flex-row border-2 border-green-500 shadow-2xl">
                 <div className="relative h-[160px] w-full shrink-0 overflow-hidden rounded-2xl sm:h-[160px] sm:w-1/2">
                   <img
                     alt="Cherries"
                     className="pointer-events-none absolute inset-0 h-full w-full scale-125 object-cover select-none"
                     loading="lazy"
-                    src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/docs/cherries.jpeg"
+                    src={tutors?.photo}
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-3">
@@ -35,7 +38,7 @@ const AllTutorsPage = async () => {
                       <span className="text-sm font-medium text-foreground">{tutors.sessionStartDate}</span>
                       
                     </div>
-                    <Button className="w-full sm:w-auto">Details</Button>
+                    <Link href={`/tutors/${tutors._id}`}><Button  className="w-full sm:w-auto">Details</Button></Link>
                   </Card.Footer>
                 </div>
               </Card>
