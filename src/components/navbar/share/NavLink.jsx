@@ -9,7 +9,7 @@ const NavLink = ({ href, children }) => {
     const isActive = pathname === href;
   return (
     <div>
-        <Link href={href} className={isActive ? 'text-green-500 font-bold' : 'text-gray-500 hover:text-yellow-500'} >
+        <Link href={href} className={isActive ? 'text-white font-bold bg-green-400 rounded-full p-3' : 'text-gray-500 hover:text-yellow-500'} >
             {children}
         </Link>
       

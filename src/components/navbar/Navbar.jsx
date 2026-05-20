@@ -1,11 +1,21 @@
+"use client"
 import Link from 'next/link'
 import React from 'react'
 import NavLink from './share/NavLink'
+import { authClient } from '@/lib/auth-client';
+import Image from 'next/image';
 
 const Navbar = () => {
+
+    const { data: session } = authClient.useSession();
+      const user = session?.user;
+
+      console.log(user);
+
+
     return (
         <div>
-            <div className="navbar bg-green-50 shadow-sm">
+            <div className="navbar flex justify-between bg-green-50 shadow-2xl">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -25,8 +35,8 @@ const Navbar = () => {
                     <Link href={`/profile`} className="ml-0 md:ml-4 text-xl md:text-3xl font-bold normal-case">
                         <span>Online<span className='text-green-500'>BD</span></span><samp className='text-yellow-400 pl-2'>Tutors</samp></Link>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                <div className="navbar-center  rounded-full bg-green-100 hidden lg:flex">
+                    <ul className=" flex gap-4 p-3">
                         <li><NavLink href="/">Home</NavLink></li>
                         <li><NavLink href="/tutors">All Tutors</NavLink></li>
                         <li><NavLink href="/add-tutors">Add Tutors</NavLink></li>
@@ -34,11 +44,15 @@ const Navbar = () => {
                         <li><NavLink href="/my-booked-sessions">My Booked Sessions</NavLink></li>
                     </ul>
                 </div>
-                <div className="navbar-end gap-2 mr-0 md:mr-4 ">
+
+
+                {!user ? <div className="navbar-end gap-2 mr-0 md:mr-4 ">
                    <Link href="/login" className="p-2 md:btn bg-[#FFCC31] rounded-lg border border-white text-white hover:bg-white hover:text-[#FFCC31] hover:border hover:border-[#FFCC31] text-md md:text-xl">Login</Link>
                    <Link href="/signup" className="p-2 md:btn border border-[#FFCC31] text-[#FFCC31] hover:bg-white hover:text-[#FFCC31] rounded-lg text-md md:text-xl">SignUp</Link>
 
-                </div>
+                </div>: <Link href={`/profile`}><Image src={user?.image} alt={user.name} width={60} height={60} className='rounded-full w-16 h-16 ml-50 mr-10' /></Link> }
+                
+
             </div>
         </div>
     )
