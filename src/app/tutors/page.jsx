@@ -1,11 +1,15 @@
 
+import { allTutors } from "@/lib/dataFetch";
 import { Button, Card, CloseButton } from "@heroui/react";
 import Link from "next/link";
 
 const AllTutorsPage = async () => {
+  // const tutorsData = await allTutors();
+
   const res = await fetch("http://localhost:5000/tutors");
   const tutorsData = await res.json();
   console.log(tutorsData)
+  console.log(tutorsData);
 
  
   return (

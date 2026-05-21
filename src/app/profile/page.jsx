@@ -1,8 +1,7 @@
 "use client"
 import { authClient } from '@/lib/auth-client';
-import { Button } from '@heroui/react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+
 
 
 
@@ -13,7 +12,7 @@ const MyProfilepage = () => {
   const user = session?.user;
   // console.log(user);
 
-  const router = useRouter();
+
 
   const noData = !user && !isPending;
 
@@ -44,12 +43,7 @@ const MyProfilepage = () => {
             </div>
 
           </div>
-          <div className="flex justify-center w-full">
-            <Button onClick={async () => {
-              await authClient.signOut();
-              router.push("/")
-            }}
-              className="btn btn-error w-full rounded-2xl hover:rounded-md text-white ">LogOut</Button></div>
+         
 
         </div>
       )}
