@@ -11,21 +11,11 @@ const Details = async ({ params }) => {
 
     const { id } = await params;
 
-  
-    // const session = await auth.api.getSession({
-    //     headers: await headers()
-    // });
-
-    // const user = session?.user;
-    // if (!user) {
-    //     redirect("/login");-
-    // }
-
      const res = await fetch(`http://localhost:5000/tutors/${id}`);
     const details = await res.json();
 
     // const courseDetails = details.find(c => c.id == id);
-    console.log(details);
+    // console.log(details);
 
 
     return (
