@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+export const dynamic = "force-dynamic";
 
 export default function MyBookedSessions() {
   const [bookings, setBookings] = useState([]);
@@ -15,7 +16,7 @@ export default function MyBookedSessions() {
       try {
         // In production, your backend/API route should identify the user 
         // via session cookies or a JWT token, ensuring privacy.
-        const response = await fetch("http://localhost:5000/booking");
+        const response = await fetch(`http:/${process.env.NEXT_PUBLIC_SERVER_URL}/booking`);
         if (response.ok) {
           const data = await response.json();
           setBookings(data);
@@ -42,7 +43,7 @@ export default function MyBookedSessions() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`http://localhost:5000/booking`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

@@ -2,6 +2,7 @@
 
 import { authClient } from "@/lib/auth-client";
 import { useState } from "react";
+export const dynamic = "force-dynamic";
 
 const StudentModal = ({tutor}) => {
    const { data: session } = authClient.useSession();
@@ -18,7 +19,7 @@ const StudentModal = ({tutor}) => {
       setSuccess("");
   
       try {
-        const res = await fetch("http://localhost:5000/booking", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

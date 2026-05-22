@@ -3,14 +3,18 @@
 
 import StudentModal from "@/components/StudentModal";
 import Image from "next/image";
+export const dynamic = "force-dynamic";
 
 
 const Details = async ({ params }) => {
 
     const { id } = await params;
 
-    const res = await fetch(`http://localhost:5000/tutors/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutors/${id}`, {
         cache: "no-store",
+        headers: {
+            authorization: "logged in"
+        }
     });
 
     const details = await res.json();
