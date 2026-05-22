@@ -83,7 +83,7 @@
 //                             <FieldError />
 //                         </TextField>
 
-                        
+
 
 //                         {/* Price */}
 //                         <TextField name="location" type="text" isRequired>
@@ -217,8 +217,9 @@ const AddTutorsPage = () => {
 
   return (
     <div>
-      <div className="max-w-8/10 mx-auto shadow-2xl my-8">
+      <div className="max-w-6/10 mx-auto shadow-2xl my-8">
         <Form onSubmit={onSubmit} className="p-10 space-y-8">
+          <h1 className="text-center text-xl  sm:text-3xl font-bold ">ADD TUTORS</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Tutor Name */}
             <div className="md:col-span-2">
@@ -267,11 +268,35 @@ const AddTutorsPage = () => {
             </div>
 
             {/* Date */}
+            
             <TextField name="sessionStartDate" isRequired>
+              <Label>Session Date Range</Label>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <Input
+                  type="date"
+                  name="startDate"
+                  className="rounded-2xl"
+                />
+
+                <Input
+                  type="date"
+                  name="endDate"
+                  className="rounded-2xl"
+                />
+
+              </div>
+
+              <FieldError />
+            </TextField>
+          
+
+            {/* <TextField name="sessionStartDate" isRequired>
               <Label>Date</Label>
               <Input type="date" className="rounded-2xl" />
               <FieldError />
-            </TextField>
+            </TextField> */}
 
             {/* Location */}
             <TextField name="location" isRequired>
@@ -320,32 +345,47 @@ const AddTutorsPage = () => {
             {/* Teaching Mode */}
             <div>
               <Label>Teaching Mode</Label>
-              <TextArea
+
+              <select
                 name="teachingMode"
-                placeholder="Online / Offline / Both"
-                className="rounded-3xl"
-              />
+                className="w-full rounded-3xl border p-3"
+                defaultValue=""
+              >
+                <option value="" disabled>
+                  Select Teaching Mode
+                </option>
+
+                <option value="Online">Online</option>
+                <option value="Offline">Offline</option>
+                <option value="Both">Both</option>
+              </select>
             </div>
 
             {/* Total Slot */}
+
             <div>
-              <Label>Total Slot</Label>
-              <TextArea
-                name="totalSlot"
-                placeholder="100"
-                className="rounded-3xl"
-              />
+              <TextField name="totalSlot" isRequired>
+                <Label>Total Slot</Label>
+                <Input
+                  type="number"
+                  placeholder="100"
+                  className="rounded-2xl"
+                />
+                <FieldError />
+              </TextField>
             </div>
           </div>
 
           {/* Submit Button */}
+          <div className="md:col-span-2 flex justify-center">
           <Button
             type="submit"
             variant="outline"
-            className="rounded-xl w-1/2 mx-auto bg-cyan-400 text-white"
+            className="rounded-xl w-1/2 bg-cyan-400 text-white"
           >
             Add Tutor
           </Button>
+          </div>
         </Form>
       </div>
     </div>
